@@ -25,6 +25,8 @@ E:\eElements\2.Firmware\eElements\EWARM/../Drivers/epd
 -I
 E:\eElements\2.Firmware\eElements\EWARM/../Drivers/element
 -I
+E:\eElements\2.Firmware\eElements\EWARM/../Drivers/PWR
+-I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
@@ -44,6 +46,8 @@ E:\eElements\2.Firmware\eElements\Drivers\CMSIS\Include
 E:\eElements\2.Firmware\eElements\Drivers\epd
 -I
 E:\eElements\2.Firmware\eElements\Drivers\element
+-I
+E:\eElements\2.Firmware\eElements\Drivers\PWR
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
