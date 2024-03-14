@@ -356,6 +356,8 @@
           <state>$PROJ_DIR$/../Drivers/epd</state>
           <state>$PROJ_DIR$/../Drivers/element</state>
           <state>$PROJ_DIR$/../Drivers/PWR</state>
+          <state>$PROJ_DIR$/../Drivers/bsp</state>
+          <state>$PROJ_DIR$/../Drivers/battery</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -1132,6 +1134,18 @@
   <group>
     <name>Drivers</name>
     <group>
+      <name>battery</name>
+      <file>
+        <name>$PROJ_DIR$\..\Drivers\battery\battery.c</name>
+      </file>
+    </group>
+    <group>
+      <name>bsp</name>
+      <file>
+        <name>$PROJ_DIR$\..\Drivers\bsp\bsp.c</name>
+      </file>
+    </group>
+    <group>
       <name>CMSIS</name>
       <file>
         <name>$PROJ_DIR$\..\Core\Src\system_stm32l4xx.c</name>
@@ -1141,6 +1155,9 @@
       <name>epd</name>
       <file>
         <name>$PROJ_DIR$\..\Drivers\epd\epd.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Drivers\epd\epd_gui.c</name>
       </file>
     </group>
     <group>

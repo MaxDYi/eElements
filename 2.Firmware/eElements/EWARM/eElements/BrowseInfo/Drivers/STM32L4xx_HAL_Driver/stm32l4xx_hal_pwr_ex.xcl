@@ -27,6 +27,10 @@ E:\eElements\2.Firmware\eElements\EWARM/../Drivers/element
 -I
 E:\eElements\2.Firmware\eElements\EWARM/../Drivers/PWR
 -I
+E:\eElements\2.Firmware\eElements\EWARM/../Drivers/bsp
+-I
+E:\eElements\2.Firmware\eElements\EWARM/../Drivers/battery
+-I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
@@ -48,6 +52,10 @@ E:\eElements\2.Firmware\eElements\Drivers\epd
 E:\eElements\2.Firmware\eElements\Drivers\element
 -I
 E:\eElements\2.Firmware\eElements\Drivers\PWR
+-I
+E:\eElements\2.Firmware\eElements\Drivers\bsp
+-I
+E:\eElements\2.Firmware\eElements\Drivers\battery
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

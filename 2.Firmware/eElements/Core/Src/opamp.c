@@ -41,7 +41,7 @@ void MX_OPAMP1_Init(void)
   hopamp1.Init.PowerSupplyRange = OPAMP_POWERSUPPLY_LOW;
   hopamp1.Init.Mode = OPAMP_FOLLOWER_MODE;
   hopamp1.Init.NonInvertingInput = OPAMP_NONINVERTINGINPUT_IO0;
-  hopamp1.Init.PowerMode = OPAMP_POWERMODE_LOWPOWER;
+  hopamp1.Init.PowerMode = OPAMP_POWERMODE_NORMALPOWER;
   hopamp1.Init.UserTrimming = OPAMP_TRIMMING_FACTORY;
   if (HAL_OPAMP_Init(&hopamp1) != HAL_OK)
   {
@@ -70,13 +70,8 @@ void HAL_OPAMP_MspInit(OPAMP_HandleTypeDef* opampHandle)
     PA0     ------> OPAMP1_VINP
     PA3     ------> OPAMP1_VOUT
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_0;
+    GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_3;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = GPIO_PIN_3;
-    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
