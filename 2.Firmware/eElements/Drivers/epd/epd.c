@@ -5,41 +5,19 @@
 
 #define EPD_SPI hspi1
 
-// ³õÊ¼»¯GPIO
+// ï¿½ï¿½Ê¼ï¿½ï¿½GPIO
 void EPD_GPIOInit(void)
 {
     // MX_SPI1_Init();
 }
 
-// Ä£ÄâSPIÊ±Ðò
+// Ä£ï¿½ï¿½SPIÊ±ï¿½ï¿½
 void EPD_WR_Bus(uint8_t dat)
 {
-    /*
-    uint8_t i;
-    EPD_CS_Clr();
-    for (i = 0; i < 8; i++)
-    {
-        EPD_SCL_Clr();
-        if (dat & 0x80)
-        {
-            EPD_SDA_Set();
-        }
-        else
-        {
-            EPD_SDA_Clr();
-        }
-        EPD_SCL_Set();
-        dat <<= 1;
-    }
-    EPD_CS_Set();
-    */
-
-    //EPD_CS_Clr();
     HAL_SPI_Transmit(&EPD_SPI, &dat, 1, 0xffff);
-    //EPD_CS_Set();
 }
 
-// Ð´ÈëÒ»¸öÃüÁî
+// Ð´ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void EPD_WR_REG(uint8_t reg)
 {
     EPD_DC_Clr();
@@ -47,7 +25,7 @@ void EPD_WR_REG(uint8_t reg)
     EPD_DC_Set();
 }
 
-// Ð´ÈëÒ»¸ö×Ö½Ú
+// Ð´ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½ï¿½
 void EPD_WR_DATA8(uint8_t dat)
 {
     EPD_WR_Bus(dat);
@@ -75,7 +53,7 @@ void EPD_Update(void)
     Epaper_READBUSY();
 }
 
-// ³õÊ¼»¯ÆÁÄ»
+// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ä»
 void EPD_GUIInit(void)
 {
     EPD_GPIOInit();
@@ -125,7 +103,7 @@ void EPD_GUIInit(void)
     Epaper_READBUSY();
 }
 
-void Paint_NewImage(uint8_t *image, uint16_t Width, uint16_t Height, uint16_t Rotate, uint16_t Color)
+void Paint_NewImage(uint8_t* image, uint16_t Width, uint16_t Height, uint16_t Rotate, uint16_t Color)
 {
     Paint.Image = 0x00;
     Paint.Image = image;
@@ -178,13 +156,13 @@ void Paint_SetPixel(uint16_t Xpoint, uint16_t Ypoint, uint16_t Color)
     Rdata = Paint.Image[Addr];
     if (Color == BLACK)
     {
-        Paint.Image[Addr] = Rdata & ~(0x80 >> (X % 8)); // ½«¶ÔÓ¦Êý¾ÝÎ»ÖÃ0
+        Paint.Image[Addr] = Rdata & ~(0x80 >> (X % 8)); // ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½0
     }
     else
-        Paint.Image[Addr] = Rdata | (0x80 >> (X % 8)); // ½«¶ÔÓ¦Êý¾ÝÎ»ÖÃ1
+        Paint.Image[Addr] = Rdata | (0x80 >> (X % 8)); // ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½1
 }
 
-// ÇåÆÁº¯Êý
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void EPD_Clear(uint16_t Color)
 {
     uint16_t X, Y;
@@ -199,32 +177,25 @@ void EPD_Clear(uint16_t Color)
     }
 }
 
-// »­µãº¯Êý
+// ï¿½ï¿½ï¿½ãº¯ï¿½ï¿½
 void EPD_DrawPoint(uint16_t Xpoint, uint16_t Ypoint, uint16_t Color)
 {
     Paint_SetPixel(Xpoint - 1, Ypoint - 1, Color);
 }
 
-// ¸üÐÂµ½ÏÔ´æ
-void EPD_Display(unsigned char *Image)
+// ï¿½ï¿½ï¿½Âµï¿½ï¿½Ô´ï¿½
+void EPD_Display(unsigned char* Image)
 {
     unsigned int Width, Height, i, j;
     uint32_t k = 0;
     Width = EPD_W;
-    Height = EPD_H / 8 ;
+    Height = EPD_H / 8;
     EPD_WR_REG(0x24);
-    for (j = 0; j < Height; j++)
-    {
-        for (i = 0; i < Width; i++)
-        {
-            EPD_WR_DATA8(Image[k]);
-            k++;
-        }
-    }
+    HAL_SPI_Transmit(&EPD_SPI, &Image[0], Width * Height, 0xffff);
     EPD_Update();
 }
 
-// »­Ö±Ïß
+// ï¿½ï¿½Ö±ï¿½ï¿½
 void EPD_DrawLine(uint16_t Xstart, uint16_t Ystart, uint16_t Xend, uint16_t Yend, uint16_t Color)
 {
     uint16_t Xpoint, Ypoint;
@@ -264,7 +235,7 @@ void EPD_DrawLine(uint16_t Xstart, uint16_t Ystart, uint16_t Xend, uint16_t Yend
     }
 }
 
-// »­¾ØÐÎ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void EPD_DrawRectangle(uint16_t Xstart, uint16_t Ystart, uint16_t Xend, uint16_t Yend, uint16_t Color, uint8_t mode)
 {
     uint16_t i;
@@ -284,7 +255,7 @@ void EPD_DrawRectangle(uint16_t Xstart, uint16_t Ystart, uint16_t Xend, uint16_t
     }
 }
 
-// »­Ô²ÐÎ
+// ï¿½ï¿½Ô²ï¿½ï¿½
 void EPD_DrawCircle(uint16_t X_Center, uint16_t Y_Center, uint16_t Radius, uint16_t Color, uint8_t mode)
 {
     uint16_t Esp, sCountY;
@@ -341,7 +312,7 @@ void EPD_DrawCircle(uint16_t X_Center, uint16_t Y_Center, uint16_t Radius, uint1
     }
 }
 
-// ÏÔÊ¾×Ö·û
+// ï¿½ï¿½Ê¾ï¿½Ö·ï¿½
 void EPD_ShowChar(uint16_t x, uint16_t y, uint16_t chr, uint16_t size1, uint16_t color)
 {
     uint16_t i, m, temp, size2, chr1;
@@ -350,26 +321,26 @@ void EPD_ShowChar(uint16_t x, uint16_t y, uint16_t chr, uint16_t size1, uint16_t
     if (size1 == 8)
         size2 = 6;
     else
-        size2 = (size1 / 8 + ((size1 % 8) ? 1 : 0)) * (size1 / 2); // µÃµ½×ÖÌåÒ»¸ö×Ö·û¶ÔÓ¦µãÕó¼¯ËùÕ¼µÄ×Ö½ÚÊý
-    chr1 = chr - ' ';                                              // ¼ÆËãÆ«ÒÆºóµÄÖµ
+        size2 = (size1 / 8 + ((size1 % 8) ? 1 : 0)) * (size1 / 2); // ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+    chr1 = chr - ' ';                                              // ï¿½ï¿½ï¿½ï¿½Æ«ï¿½Æºï¿½ï¿½Öµ
     for (i = 0; i < size2; i++)
     {
         if (size1 == 8)
         {
             temp = asc2_0806[chr1][i];
-        } // µ÷ÓÃ0806×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½0806ï¿½ï¿½ï¿½ï¿½
         else if (size1 == 12)
         {
             temp = asc2_1206[chr1][i];
-        } // µ÷ÓÃ1206×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½1206ï¿½ï¿½ï¿½ï¿½
         else if (size1 == 16)
         {
             temp = asc2_1608[chr1][i];
-        } // µ÷ÓÃ1608×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½1608ï¿½ï¿½ï¿½ï¿½
         else if (size1 == 24)
         {
             temp = asc2_2412[chr1][i];
-        } // µ÷ÓÃ2412×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½2412ï¿½ï¿½ï¿½ï¿½
         else
             return;
         for (m = 0; m < 8; m++)
@@ -391,14 +362,14 @@ void EPD_ShowChar(uint16_t x, uint16_t y, uint16_t chr, uint16_t size1, uint16_t
     }
 }
 
-// ÏÔÊ¾×Ö·û´®
-// x,y:Æðµã×ø±ê
-// size1:×ÖÌå´óÐ¡
-//*chr:×Ö·û´®ÆðÊ¼µØÖ·
-// mode:0,·´É«ÏÔÊ¾;1,Õý³£ÏÔÊ¾
-void EPD_ShowString(uint16_t x, uint16_t y, uint8_t *chr, uint16_t size1, uint16_t color)
+// ï¿½ï¿½Ê¾ï¿½Ö·ï¿½ï¿½ï¿½
+// x,y:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// size1:ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
+//*chr:ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ö·
+// mode:0,ï¿½ï¿½É«ï¿½ï¿½Ê¾;1,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+void EPD_ShowString(uint16_t x, uint16_t y, uint8_t* chr, uint16_t size1, uint16_t color)
 {
-    while (*chr != '\0') // ÅÐ¶ÏÊÇ²»ÊÇ·Ç·¨×Ö·û!
+    while (*chr != '\0') // ï¿½Ð¶ï¿½ï¿½Ç²ï¿½ï¿½Ç·Ç·ï¿½ï¿½Ö·ï¿½!
     {
 
         EPD_ShowChar(x, y, *chr, size1, color);
@@ -418,12 +389,12 @@ uint32_t EPD_Pow(uint16_t m, uint16_t n)
     return result;
 }
 
-// ÏÔÊ¾Êý×Ö
-// x,y :Æðµã×ø±ê
-// num :ÒªÏÔÊ¾µÄÊý×Ö
-// len :Êý×ÖµÄÎ»Êý
-// size:×ÖÌå´óÐ¡
-// mode:0,·´É«ÏÔÊ¾;1,Õý³£ÏÔÊ¾
+// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+// x,y :ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// num :Òªï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// len :ï¿½ï¿½ï¿½Öµï¿½Î»ï¿½ï¿½
+// size:ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
+// mode:0,ï¿½ï¿½É«ï¿½ï¿½Ê¾;1,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 void EPD_ShowNum(uint16_t x, uint16_t y, uint32_t num, uint16_t len, uint16_t size1, uint16_t color)
 {
     uint8_t t, temp, m = 0;
@@ -443,34 +414,34 @@ void EPD_ShowNum(uint16_t x, uint16_t y, uint32_t num, uint16_t len, uint16_t si
     }
 }
 
-// ÏÔÊ¾ºº×Ö
-// x,y:Æðµã×ø±ê
-// num:ºº×Ö¶ÔÓ¦µÄÐòºÅ
-// mode:0,·´É«ÏÔÊ¾;1,Õý³£ÏÔÊ¾
+// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+// x,y:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// num:ï¿½ï¿½ï¿½Ö¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½
+// mode:0,ï¿½ï¿½É«ï¿½ï¿½Ê¾;1,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 void EPD_ShowChinese(uint16_t x, uint16_t y, uint16_t num, uint16_t size1, uint16_t color)
 {
     uint16_t m, temp;
     uint16_t x0, y0;
-    uint16_t i, size3 = (size1 / 8 + ((size1 % 8) ? 1 : 0)) * size1; // µÃµ½×ÖÌåÒ»¸ö×Ö·û¶ÔÓ¦µãÕó¼¯ËùÕ¼µÄ×Ö½ÚÊý
+    uint16_t i, size3 = (size1 / 8 + ((size1 % 8) ? 1 : 0)) * size1; // ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
     x += 1, y += 1, x0 = x, y0 = y;
     for (i = 0; i < size3; i++)
     {
         if (size1 == 16)
         {
             temp = Hzk1[num][i];
-        } // µ÷ÓÃ16*16×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½16*16ï¿½ï¿½ï¿½ï¿½
         else if (size1 == 24)
         {
             temp = Hzk2[num][i];
-        } // µ÷ÓÃ24*24×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½24*24ï¿½ï¿½ï¿½ï¿½
         else if (size1 == 32)
         {
             temp = Hzk3[num][i];
-        } // µ÷ÓÃ32*32×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½32*32ï¿½ï¿½ï¿½ï¿½
         else if (size1 == 64)
         {
             temp = Hzk4[num][i];
-        } // µ÷ÓÃ64*64×ÖÌå
+        } // ï¿½ï¿½ï¿½ï¿½64*64ï¿½ï¿½ï¿½ï¿½
         else
             return;
         for (m = 0; m < 8; m++)
@@ -491,12 +462,12 @@ void EPD_ShowChinese(uint16_t x, uint16_t y, uint16_t num, uint16_t size1, uint1
         y = y0;
     }
 }
-// ÏÔÊ¾Í¼Æ¬
-//  x,y:Æðµã×ø±ê
-//  sizex£ºÍ¼Æ¬¿í¶È
-//  sizey:Í¼Æ¬³¤¶È
-//  BMP£ºÍ¼Æ¬Êý×é
-//  mode:Í¼Æ¬ÏÔÊ¾µÄÑÕÉ«
+// ï¿½ï¿½Ê¾Í¼Æ¬
+//  x,y:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//  sizexï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+//  sizey:Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+//  BMPï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+//  mode:Í¼Æ¬ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½É«
 void EPD_ShowPicture(uint16_t x, uint16_t y, uint16_t sizex, uint16_t sizey, const uint8_t BMP[], uint16_t Color)
 {
     uint16_t j = 0;

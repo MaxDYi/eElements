@@ -1439,9 +1439,6 @@
                     <name>$PROJ_DIR$\..\Core\Src\adc.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\Core\Src\dac.c</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\Core\Src\gpio.c</name>
                 </file>
                 <file>
@@ -1492,6 +1489,12 @@
             </file>
         </group>
         <group>
+            <name>element</name>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\element\element.c</name>
+            </file>
+        </group>
+        <group>
             <name>epd</name>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\epd\epd.c</name>
@@ -1519,12 +1522,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_cortex.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dac.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dac_ex.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dma.c</name>

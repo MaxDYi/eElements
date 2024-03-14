@@ -1152,6 +1152,12 @@
       </file>
     </group>
     <group>
+      <name>element</name>
+      <file>
+        <name>$PROJ_DIR$\..\Drivers\element\element.c</name>
+      </file>
+    </group>
+    <group>
       <name>epd</name>
       <file>
         <name>$PROJ_DIR$\..\Drivers\epd\epd.c</name>

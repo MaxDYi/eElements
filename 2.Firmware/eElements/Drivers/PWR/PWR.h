@@ -28,7 +28,7 @@ void PWR_GPIOCLK_Disable(void);
 
 void PWR_GPIO_ModeAnalog(void);
 
-void PWR_EnterStop2Mode(void);
+void PWR_EnterStop2Mode(uint16_t stopTime);
 
 
 #endif

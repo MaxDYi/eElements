@@ -1,3 +1,10 @@
+/*
+ * @Description  : 
+ * @Author       : MaxDYi
+ * @Date         : 2024-03-13 09:40:18
+ * @LastEditTime : 2024-03-14 15:05:07
+ * @FilePath     : \eElements\Drivers\PWR\PWR.c
+ */
 #include "PWR.h"
 
 void PWR_GPIOCLK_Enable(void)
@@ -36,7 +43,7 @@ void PWR_CLK_Disable(void)
     HAL_RTCEx_DeactivateWakeUpTimer(&RTCHandle);
 }
 
-void PWR_EnterStop2Mode(void)
+void PWR_EnterStop2Mode(uint16_t stopTime)
 {
     printf("STOP\r\n");
 
@@ -51,7 +58,7 @@ void PWR_EnterStop2Mode(void)
     PWR_GPIOCLK_Disable();
 
     HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
-    HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, 20480, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
+    HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, stopTime, RTC_WAKEUPCLOCK_RTCCLK_DIV16);
 
     __HAL_RCC_WAKEUPSTOP_CLK_CONFIG(RCC_STOP_WAKEUPCLOCK_MSI);
     HAL_PWREx_EnterSTOP2Mode(PWR_STOPENTRY_WFI);

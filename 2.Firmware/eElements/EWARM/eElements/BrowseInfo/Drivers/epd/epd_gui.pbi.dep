@@ -46,7 +46,13 @@ E:\eElements\2.Firmware\eElements\EWARM\eElements\BrowseInfo\Drivers\epd\epd_gui
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_spi_ex.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_uart.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_uart_ex.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdio.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdlib.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product_stdlib.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\string.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product_string.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\bsp\bsp.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Core\Inc\spi.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Core\Inc\main.h \
-  E:\eElements\2.Firmware\eElements\Drivers\epd\epd.h
+  E:\eElements\2.Firmware\eElements\Drivers\epd\epd.h \
+  E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\element\element.h

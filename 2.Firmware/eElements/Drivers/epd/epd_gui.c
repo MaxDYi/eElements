@@ -1,5 +1,6 @@
 #include "epd_gui.h"
 
+
 void EPD_DrawFrame(uint8_t num) {
     EPD_Init();
 
@@ -8,14 +9,28 @@ void EPD_DrawFrame(uint8_t num) {
     Paint_NewImage(Image_BW, EPD_W, EPD_H, 0, WHITE);
     EPD_Clear(WHITE);
 
-    EPD_ShowChinese(20, 0, 3, 32, BLACK);
-    EPD_ShowChinese(52, 0, 4, 32, BLACK);
-    EPD_ShowChinese(84, 0, 5, 32, BLACK);
-    EPD_ShowChinese(116, 0, 6, 32, BLACK);
-    EPD_ShowChinese(148, 0, 7, 32, BLACK);
-    EPD_ShowString(60, 34, "2022/05/11", 16, BLACK);
-    EPD_ShowString(40, 50, "ASCII:", 16, BLACK);
-    EPD_ShowString(100, 50, "CODE:", 16, BLACK);
+    struct elements ele = elementInfo[num];
+
+    EPD_ShowNum(10, 10, ele.atomicNumber, 1, 24, BLACK);
+    EPD_ShowString(10, 40, ele.atomicSymbol, 24, BLACK);
+    EPD_ShowString(10, 70, ele.nameEN, 24, BLACK);
+    //EPD_ShowNum(10, 100, ele.relativeAtomicMass, 1, 24, BLACK);
+    char relativeAtomicMass_str[10];
+    sprintf(relativeAtomicMass_str, "%.3f", (double)ele.relativeAtomicMass);
+    EPD_ShowString(10, 100, (uint8_t*)relativeAtomicMass_str, 24, BLACK);
+    EPD_Display(Image_BW);
+
+    EPD_Deinit();
+}
+
+void EPD_DrawEmpty(void) {
+    EPD_Init();
+
+    uint8_t Image_BW[EPD_W * EPD_H / 8];
+    EPD_GUIInit();
+    Paint_NewImage(Image_BW, EPD_W, EPD_H, 0, WHITE);
+    EPD_Clear(WHITE);
+
     EPD_Display(Image_BW);
 
     EPD_Deinit();
