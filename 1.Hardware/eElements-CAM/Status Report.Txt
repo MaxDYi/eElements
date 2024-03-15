@@ -1,13 +1,10 @@
-Output: NC Drill Files
-Type  : NC Drill
-From  : Project [eElements.PrjPcb]
-   Generated File[eElements-RoundHoles.TXT]
-   Generated File[eElements-SlotHoles.TXT]
-   Generated File[eElements.LDP]
-   Generated File[eElements.DRR]
+Output: Generates pick and place files
+Type  : Pick Place
+From  : Variant [[No Variations]] of Project [eElements.PrjPcb]
+   Generated File[Pick Place for eElements.csv]
 
 
-Files Generated   : 4
+Files Generated   : 1
 Documents Printed : 0
 
-Finished Output Generation At 12:11:16 On 2024/3/15
+Finished Output Generation At 16:20:03 On 2024/3/15
