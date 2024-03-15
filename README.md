@@ -1,1 +1,3 @@
-stm32L4
+主控：STM32L431CCT6
+
+超低功耗256KB Flash
