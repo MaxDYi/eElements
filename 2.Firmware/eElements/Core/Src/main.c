@@ -103,6 +103,7 @@ int main(void)
   MX_OPAMP1_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
+    LED_GREEN_On();
     KEY_GPIO_Init();
     if(KEY_Hold() == KEY_DOWN) {
         PWR_LDO_GPIO_Init();

@@ -11,7 +11,7 @@
 
 #include "main.h"
 
-#define ELEMENT_NUM 64
+#define ELEMENT_NUM 118
 #define ELEMENT_SAVE_ADDR 0x08003000
 
 struct elements
