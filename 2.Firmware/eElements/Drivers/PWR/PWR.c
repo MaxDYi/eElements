@@ -2,8 +2,8 @@
  * @Description  : 
  * @Author       : MaxDYi
  * @Date         : 2024-03-13 09:40:18
- * @LastEditTime : 2024-03-14 15:05:07
- * @FilePath     : \eElements\Drivers\PWR\PWR.c
+ * @LastEditTime: 2024-03-28 23:26:01
+ * @FilePath: \eElements\Drivers\PWR\PWR.c
  */
 #include "PWR.h"
 
@@ -33,7 +33,7 @@ void PWR_GPIO_ModeAnalog(void)
 
     HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);
     HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
+    //HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
     HAL_GPIO_Init(GPIOH, &GPIO_InitStructure);
 }
 
