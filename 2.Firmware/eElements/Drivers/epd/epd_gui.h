@@ -20,6 +20,8 @@ void EPD_DrawFrame(uint8_t num);
 
 void EPD_DrawEmpty(void);
 
+void EPD_DrawLowVoltage(void);
+
 void EPD_DrawAtomicNum(uint8_t atomicNumber);
 
 void EPD_DrawAtomicSymbol(uint8_t* atomicSymbol);
@@ -28,8 +30,8 @@ void EPD_DrawAtomicNameEN(uint8_t* nameEN);
 
 void EPD_DrawAtomicNameCN(uint8_t num);
 
-void EPD_DrawAtomicMass(uint8_t massAccuracy,float relativeAtomicMass);
+void EPD_DrawAtomicMass(uint8_t massAccuracy , float relativeAtomicMass);
 
-void EPD_DrawElectronShell(uint8_t shellNum,uint8_t *shell);
+void EPD_DrawElectronShell(uint8_t shellNum , uint8_t* shell);
 
 #endif

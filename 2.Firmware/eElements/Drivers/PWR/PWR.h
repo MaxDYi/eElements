@@ -12,23 +12,25 @@
 
 #include "main.h"
 #include "stm32l4xx_hal.h"
-#include "gpio.h"
 #include "usart.h"
 #include "rtc.h"
 #include "spi.h"
-#include "adc.h"
 #include "opamp.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "string.h"
+#include "bsp.h"
+#include "battery.h"
 
-void PWR_GPIOCLK_Enable(void);
+void PWR_CLK_Disable(void);
 
-void PWR_GPIOCLK_Disable(void);
+void PWR_DisableGPIOA(void);
 
-void PWR_GPIO_ModeAnalog(void);
+void PWR_DisableGPIOB(void);
+
+void PWR_DisableGPIOC(void);
+
+void PWR_DisableGPIOH(void);
 
 void PWR_EnterStop2Mode(uint16_t stopTime);
 
+uint8_t PWR_PowerEnough(void);
 
 #endif

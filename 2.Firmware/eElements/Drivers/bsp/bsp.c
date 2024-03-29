@@ -2,7 +2,7 @@
  * @Description  :
  * @Author       : MaxDYi
  * @Date         : 2024-03-14 09:53:20
- * @LastEditTime: 2024-03-18 15:52:39
+ * @LastEditTime: 2024-03-29 10:38:40
  * @FilePath: \eElements\Drivers\bsp\bsp.c
  */
 #include "bsp.h"
@@ -146,19 +146,42 @@ uint8_t KEY_Read(void)
     }
 }
 
-
-uint8_t KEY_Hold(void) {
+uint8_t KEY_Hold(uint8_t count_100ms) {
     if (KEY_Read() == KEY_DOWN) {
-        uint8_t keyCount = 10;
-        while (keyCount--) {
+        while (count_100ms > 0) {
             if (KEY_Read() == KEY_DOWN) {
                 HAL_Delay(100);
             }
             else {
                 return KEY_UP;
             }
+            count_100ms--;
         }
         return KEY_DOWN;
     }
     return KEY_UP;
 }
+
+void BAT_GPIO_Init(void)
+{
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+
+    GPIO_InitTypeDef GPIO_InitStruct = { 0 };
+    GPIO_InitStruct.Pin = BAT_CHRG_Pin | BAT_STDBY_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(BAT_CHRG_GPIO_Port , &GPIO_InitStruct);
+}
+
+void BAT_GPIO_Deinit(void)
+{
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+
+    GPIO_InitTypeDef GPIO_InitStruct = { 0 };
+    GPIO_InitStruct.Pin = BAT_CHRG_Pin | BAT_STDBY_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(KEY_GPIO_Port , &GPIO_InitStruct);
+}
+
+

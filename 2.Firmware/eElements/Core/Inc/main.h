@@ -75,6 +75,10 @@ void Error_Handler(void);
 #define EPD_RES_GPIO_Port GPIOB
 #define EPD_BUSY_Pin GPIO_PIN_10
 #define EPD_BUSY_GPIO_Port GPIOB
+#define BAT_CHRG_Pin GPIO_PIN_11
+#define BAT_CHRG_GPIO_Port GPIOA
+#define BAT_STDBY_Pin GPIO_PIN_12
+#define BAT_STDBY_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14

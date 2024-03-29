@@ -41,6 +41,10 @@ void KEY_GPIO_Deinit(void);
 
 uint8_t KEY_Read(void);
 
-uint8_t KEY_Hold(void);
+uint8_t KEY_Hold(uint8_t count_100ms);
+
+void BAT_GPIO_Init(void);
+
+void BAT_GPIO_Deinit(void);
 
 #endif
