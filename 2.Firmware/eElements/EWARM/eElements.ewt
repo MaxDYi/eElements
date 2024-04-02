@@ -1471,6 +1471,12 @@
     <group>
         <name>Drivers</name>
         <group>
+            <name>AT</name>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\AT\AT.c</name>
+            </file>
+        </group>
+        <group>
             <name>battery</name>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\battery\battery.c</name>
@@ -1501,6 +1507,12 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\epd\epd_gui.c</name>
+            </file>
+        </group>
+        <group>
+            <name>parameter</name>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\parameter\parameter.c</name>
             </file>
         </group>
         <group>

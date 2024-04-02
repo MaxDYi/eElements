@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+void SystemClock_Config(void);
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -63,6 +63,7 @@ void Error_Handler(void);
 #define LED_GREEN_GPIO_Port GPIOA
 #define KEY_Pin GPIO_PIN_2
 #define KEY_GPIO_Port GPIOA
+#define KEY_EXTI_IRQn EXTI2_IRQn
 #define EPD_SCL_Pin GPIO_PIN_5
 #define EPD_SCL_GPIO_Port GPIOA
 #define EPD_SDA_Pin GPIO_PIN_7

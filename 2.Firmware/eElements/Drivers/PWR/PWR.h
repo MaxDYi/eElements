@@ -10,6 +10,9 @@
 #ifndef __PWR_H__
 #define __PWR_H__
 
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
 #include "main.h"
 #include "stm32l4xx_hal.h"
 #include "usart.h"
@@ -30,6 +33,8 @@ void PWR_DisableGPIOC(void);
 void PWR_DisableGPIOH(void);
 
 void PWR_EnterStop2Mode(uint16_t stopTime);
+
+void PWR_ExitStop2Mode(void);
 
 uint8_t PWR_PowerEnough(void);
 

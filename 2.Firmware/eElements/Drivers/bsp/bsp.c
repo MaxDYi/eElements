@@ -2,7 +2,7 @@
  * @Description  :
  * @Author       : MaxDYi
  * @Date         : 2024-03-14 09:53:20
- * @LastEditTime: 2024-03-29 10:38:40
+ * @LastEditTime: 2024-04-01 23:11:22
  * @FilePath: \eElements\Drivers\bsp\bsp.c
  */
 #include "bsp.h"
@@ -160,6 +160,23 @@ uint8_t KEY_Hold(uint8_t count_100ms) {
         return KEY_DOWN;
     }
     return KEY_UP;
+}
+
+void WKUP_Init(void) {
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    GPIO_InitTypeDef GPIO_InitStruct = { 0 };
+    GPIO_InitStruct.Pin = KEY_Pin;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+    HAL_GPIO_Init(KEY_GPIO_Port , &GPIO_InitStruct);
+    HAL_NVIC_SetPriority(EXTI2_IRQn , 1 , 0);
+    HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+    HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN4);
+}
+
+void WKUP_Deinit(void) {
+    HAL_NVIC_DisableIRQ(EXTI2_IRQn);
+    HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN4);
 }
 
 void BAT_GPIO_Init(void)
