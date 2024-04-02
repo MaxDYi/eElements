@@ -2,7 +2,7 @@
  * @Description  :
  * @Author       : MaxDYi
  * @Date         : 2024-03-14 11:44:48
- * @LastEditTime: 2024-03-19 14:26:05
+ * @LastEditTime: 2024-04-02 21:39:07
  * @FilePath: \eElements\Drivers\epd\epd_gui.h
  */
 #ifndef __EPD_GUI_H__
@@ -16,7 +16,7 @@
 #include "epd.h"
 #include "element.h"
 
-void EPD_DrawFrame(uint8_t num);
+void EPD_DrawFrame(uint8_t num , uint8_t* str);
 
 void EPD_DrawEmpty(void);
 
@@ -33,5 +33,7 @@ void EPD_DrawAtomicNameCN(uint8_t num);
 void EPD_DrawAtomicMass(uint8_t massAccuracy , float relativeAtomicMass);
 
 void EPD_DrawElectronShell(uint8_t shellNum , uint8_t* shell);
+
+void EPD_DrawStr(uint8_t* str);
 
 #endif

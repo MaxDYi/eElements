@@ -1,5 +1,5 @@
 /*
- * @Description  :
+ * @Description  : ²ÎÊý´æ´¢
  * @Author       : MaxDYi
  * @Date         : 2024-02-15 14:22:57
  * @LastEditTime : 2024-02-16 09:55:34
@@ -12,11 +12,13 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "element.h"
 
 struct parameters {
     uint32_t initFlag;
-    uint8_t showStr[20];
+    uint8_t showStr[32];
     uint64_t sleepTime;
+    uint8_t showFlag[ELEMENT_NUM];
 };
 
 void LoadParameters(struct parameters* para);

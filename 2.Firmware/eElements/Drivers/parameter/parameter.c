@@ -1,7 +1,7 @@
 #include "parameter.h"
 
 #define PARAMETER_ADDRESS 0x0803F800
-#define PARAMETER_LEN 0x100
+#define PARAMETER_LEN 0x400
 
 /**
  * @description: Flash参数结构体
@@ -11,6 +11,18 @@ struct parameters defaultParameters = {
     .initFlag = 0x01,
     .showStr = "Design by MaxDYi",
     .sleepTime = 20,
+    .showFlag = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                 1, 1, 1, 1, 1, 1, 1, 1   }
 };
 
 /**

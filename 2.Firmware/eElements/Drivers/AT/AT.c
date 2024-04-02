@@ -1,10 +1,10 @@
 #include "AT.h"
 
-#define AT_CMD_LEN 32
+#define AT_CMD_LEN 256
 
 #define PARA_SAND_NUM_MAX 64
-#define PARA_FRAME_TIME_MIN 20
-#define PARA_FRAME_TIME_MAX 1000
+#define PARA_SLEEP_TIME_MIN 10
+#define PARA_SLEEP_TIME_MAX 0xFFFFFFFF
 
 struct parameters* flashPara;
 
@@ -37,7 +37,6 @@ void AT_Init(struct parameters* para)
 void AT_ResponseOK(void)
 {
     com_printf("OK\r\n");
-    usb_printf("OK\r\n");
 }
 
 /**
@@ -47,7 +46,6 @@ void AT_ResponseOK(void)
 void AT_ResponseError(void)
 {
     com_printf("ERROR\r\n");
-    usb_printf("ERROR\r\n");
 }
 
 /**
@@ -57,19 +55,61 @@ void AT_ResponseError(void)
 void AT_ResponseInfo(void)
 {
     com_printf("Designed By MaxDYi\r\n2024/02\r\n");
-    usb_printf("Designed By MaxDYi\r\n2024/02\r\n");
 }
 
 /**
- * @description: AT指令回复帧时间
+ * @description: AT指令回复显示字符串
+ * @param {uint8_t} *str
+ * @return {*}
+ */
+void AT_ResponseShowStr(uint8_t* str) {
+    uint8_t buffer[64];
+    sprintf((char*)buffer , "AT+SHOWSTR=%s\r\n" , str);
+    com_printf(buffer);
+}
+
+/**
+ * @description: AT指令回复睡眠时间
  * @param {uint32_t} time
  * @return {*}
  */
-void AT_ResponseSleepTime(uint32_t time)
+void AT_ResponseSleepTime(uint32_t sleepTime)
 {
-    uint8_t buffer[64];
-    sprintf((char*)buffer , "AT+SLEEPTIME=%d\r\n" , time);
+    uint8_t buffer[32];
+    sprintf((char*)buffer , "AT+SLEEPTIME=%d\r\n" , sleepTime);
     com_printf(buffer);
+}
+
+/**
+ * @description: AT指令回复不显示元素号
+ * @return {*}
+ */
+void AT_ResponseBan(void) {
+    com_printf("Ban elements:\r\n");
+    for (uint8_t i = 0;i < ELEMENT_NUM;i++) {
+        if (flashPara->showFlag[i] == 0) {
+            uint8_t buffer[32];
+            sprintf((char*)buffer , "%d\t" , i + 1);
+            com_printf(buffer);
+        }
+    }
+    com_printf("\r\n");
+}
+
+/**
+ * @description: AT指令回复显示元素号
+ * @return {*}
+ */
+void AT_ResponsePick(void) {
+    com_printf("Pick elements:\r\n");
+    for (uint8_t i = 0;i < ELEMENT_NUM;i++) {
+        if (flashPara->showFlag[i] == 1) {
+            uint8_t buffer[32];
+            sprintf((char*)buffer , "%d\t" , i + 1);
+            com_printf(buffer);
+        }
+    }
+    com_printf("\r\n");
 }
 
 /**
@@ -80,22 +120,59 @@ void AT_RecevieReInit(void)
 {
     flashPara->initFlag = 0;
     SaveParameters(flashPara);
-    NVIC_SystemReset();
 }
 
+/**
+ * @description: AT指令接收不显示的元素
+ * @param {uint8_t} num
+ * @return {*}
+ */
+void AT_RecevieBan(uint8_t num) {
+    flashPara->showFlag[num - 1] = 0;
+    SaveParameters(flashPara);
+}
+
+/**
+ * @description: AT指令接收显示的元素
+ * @param {uint8_t} num
+ * @return {*}
+ */
+void AT_ReceviePick(uint8_t num) {
+    flashPara->showFlag[num - 1] = 1;
+    SaveParameters(flashPara);
+}
+
+/**
+ * @description: AT指令接收显示所有元素
+ * @return {*}
+ */
+void AT_ReceivePickAll(void) {
+    for (uint8_t i = 0;i < ELEMENT_NUM;i++) {
+        flashPara->showFlag[i] = 1;
+    }
+    SaveParameters(flashPara);
+}
+
+/**
+ * @description: AT指令接收重启
+ * @return {*}
+ */
+void AT_ReceiveReboot(void) {
+    NVIC_SystemReset();
+}
 
 /**
  * @description: AT指令接收帧时间
  * @param {uint32_t} time
  * @return {*}
  */
-void AT_RecevieFrameTime(uint32_t time)
+void AT_RecevieSleepTime(uint32_t sleepTime)
 {
-    if ((time >= PARA_FRAME_TIME_MIN) && (time <= PARA_FRAME_TIME_MAX))
+    if ((sleepTime >= PARA_SLEEP_TIME_MIN))
     {
-        flashPara->sleepTime = time;
+        flashPara->sleepTime = sleepTime;
         SaveParameters(flashPara);
-        AT_ResponseFrameTime(time);
+        AT_ResponseSleepTime(sleepTime);
     }
     else
     {
@@ -125,9 +202,12 @@ void AT_ParseCommand(uint8_t* buffer)
             {
                 AT_ResponseInfo();
             }
+            else if (strcmp(command , "SHOWSTR") == 0) {
+                AT_ResponseShowStr(flashPara->showStr);
+            }
             else if (strcmp(command , "SLEEPTIME") == 0)
             {
-                AT_ResponseFrameTime(flashPara->sleepTime);
+                AT_ResponseSleepTime(flashPara->sleepTime);
             }
         }
         else
@@ -148,13 +228,21 @@ void AT_ParseCommand(uint8_t* buffer)
                         AT_ResponseError();
                     }
                 }
-                else if (strcmp(command , "SANDNUM") == 0)
-                {
-                    AT_RecevieSandNum(number);
+                else if (strcmp(command , "BAN") == 0) {
+                    if (number >= 1 && number <= ELEMENT_NUM) {
+                        AT_RecevieBan(number);
+                    }
+                    else {
+                        AT_ResponseError();
+                    }
                 }
-                else if (strcmp(command , "FRAMETIME") == 0)
-                {
-                    AT_RecevieFrameTime(number);
+                else if (strcmp(command , "PICK") == 0) {
+                    if (number >= 1 && number <= ELEMENT_NUM) {
+                        AT_ReceviePick(number);
+                    }
+                    else {
+                        AT_ResponseError();
+                    }
                 }
             }
             else

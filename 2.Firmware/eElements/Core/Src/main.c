@@ -117,7 +117,7 @@ int main(void)
     KEY_GPIO_Init();
     LoadParameters(&runPara);
     PWR_LDO_GPIO_Init();
-    if (KEY_Hold(1) == KEY_DOWN) {
+    if (KEY_Hold(5) == KEY_DOWN) {
         PWR_LDO_On();
     }
     else {
@@ -132,28 +132,22 @@ int main(void)
     uint8_t frameNum = 0;
     uint16_t stopTime = 0;
     uint16_t remainStopTime = 0;
-    uint64_t totalStopTime = 2000 * 10;
+    //uint64_t totalStopTime = 2000 * 10;
+    uint64_t totalStopTime = runPara.sleepTime * 100 * 10;
     remainStopTime = totalStopTime;
 
-    //EPD_DrawEmpty();
-    //HAL_Delay(3000);
-    EPD_DrawFrame(frameNum);
-    frameNum++;
-    /*
-    while (1)
-    {
-        EPD_DrawFrame(frameNum);
-        frameNum++;
-        HAL_Delay(5000);
+    for (uint8_t i = frameNum;i < ELEMENT_NUM;i++) {
+        if (runPara.showFlag[i] == 1) {
+            EPD_DrawFrame(i , runPara.showStr);
+            frameNum = i + 1;
+            break;
+        }
     }
-    */
 
-    //while(1);
+    /* USER CODE END 2 */
 
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+    /* Infinite loop */
+    /* USER CODE BEGIN WHILE */
     while (1)
     {
         /* USER CODE END WHILE */
@@ -177,7 +171,7 @@ int main(void)
         }
         else {
             remainStopTime = totalStopTime;
-            if (KEY_Hold(10) == KEY_DOWN) {
+            if (KEY_Hold(5) == KEY_DOWN) {
                 EPD_DrawEmpty();
                 PWR_LDO_Off();
             }
@@ -188,10 +182,18 @@ int main(void)
             }
 
             if (1) {
-                EPD_DrawFrame(frameNum);
-                frameNum++;
-                if (frameNum >= ELEMENT_NUM) {
-                    frameNum = 0;
+                while (1) {
+                    if (runPara.showFlag[frameNum] == 1) {
+                        EPD_DrawFrame(frameNum , runPara.showStr);
+                        frameNum++;
+                        break;
+                    }
+                    else {
+                        frameNum++;
+                    }
+                    if (frameNum >= ELEMENT_NUM) {
+                        frameNum = 0;
+                    }
                 }
             }
             else {
