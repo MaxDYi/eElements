@@ -1,0 +1,6 @@
+﻿{
+txtLineCharMaxNum=128;
+scanMode="VH";
+isByteMsb=0;
+isCommonGnd=1
+}

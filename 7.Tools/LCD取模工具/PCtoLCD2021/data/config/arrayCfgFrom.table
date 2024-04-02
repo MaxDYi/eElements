@@ -1,0 +1,13 @@
+﻿{
+afterLoad=null;
+rdScanModeVH=1;
+rdByteLsb=1;
+rdComVcc=0;
+beforeSave=null;
+rdByteMsb=0;
+rdScanModeH=0;
+rdScanModeHV=0;
+rdScanModeV=0;
+edtTxtRowByteNum="128";
+rdComGnd=1
+}
