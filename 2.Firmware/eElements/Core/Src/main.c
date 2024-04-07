@@ -125,7 +125,7 @@ int main(void)
     }
 
     if (PWR_PowerEnough() == FALSE) {
-        //EPD_DrawLowVoltage();
+        EPD_DrawLowVoltage();
         PWR_LDO_Off();
     }
 
@@ -177,7 +177,7 @@ int main(void)
             }
 
             if (PWR_PowerEnough() == FALSE) {
-                //EPD_DrawLowVoltage();
+                EPD_DrawLowVoltage();
                 PWR_LDO_Off();
             }
 
