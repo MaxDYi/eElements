@@ -1,5 +1,5 @@
-Error Report for  - Users\MDYi\AppData\Local\Temp\Pro3149.tmp
-2024/3/15 16:19:36
+Error Report for  - Users\MaxDYi\AppData\Local\Temp\Qjz57E0.tmp
+2024/4/7 15:59:35
 
 Warning arcs were not exported.
 
@@ -10,7 +10,6 @@ Warning pad shape change for U1-3 from rounded 11.811mil,82.677mil to rectangula
 Warning pad shape change for U1-4 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for U1-5 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for U1-6 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
-Warning pad shape change for U1-12 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for U1-13 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for U1-14 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for U1-16 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
@@ -39,13 +38,14 @@ Warning pad shape change for U1-20 from rounded 11.811mil,82.677mil to rectangul
 Warning pad shape change for U1-15 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for U1-17 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for U3-3 from rounded 23.622mil,82.677mil to rectangular 23.622mil,59.055mil
+Warning pad shape change for U1-8 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
+Warning pad shape change for U1-23 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
+Warning pad shape change for U1-35 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
+Warning pad shape change for U1-47 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for IC1-3 from rounded 24mil,70.866mil to rectangular 24mil,46.866mil
 Warning pad shape change for IC1-1 from rounded 24mil,70.866mil to rectangular 24mil,46.866mil
-Warning pad shape change for U1-23 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for D1-2 from octagonal 39.37mil,31.496mil to rounded 31.496mil,31.496mil
-Warning pad shape change for U1-35 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
-Warning pad shape change for U1-8 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
-Warning pad shape change for U1-47 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
+Warning pad shape change for U1-12 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil
 Warning pad shape change for D7-2 from octagonal 39.37mil,31.496mil to rounded 31.496mil,31.496mil
 Warning pad shape change for D6-2 from octagonal 39.37mil,31.496mil to rounded 31.496mil,31.496mil
 Warning pad shape change for U1-11 from rounded 11.811mil,82.677mil to rectangular 11.811mil,70.866mil

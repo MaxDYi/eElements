@@ -4,9 +4,9 @@ E:\eElements\1.Hardware\eElements-PRJ\Project Outputs for eElements\Pick Place f
 ========================================================================================================================
 File Design Information:
 
-Date:       15/03/24
-Time:       16:20
-Revision:   caa5b36be2d62a0f9e021945bb88ed8dfb84dc34
+Date:       07/04/24
+Time:       15:59
+Revision:   621ec17c17fd58f52d7234c6ede3d493357c1795
 Variant:    No variations
 Units used: mil
 
@@ -15,7 +15,7 @@ Units used: mil
 "IC1","TP4056","BottomLayer","SOIC-8_EP","338.583","1244.094","180","锂电池充电管理"
 "D1","1N5819WS","BottomLayer","SOD-323","1125.984","433.071","0","肖特基二极管"
 "C9","1uF/50V","BottomLayer","C0402_M","393.701","279.409","90","贴片电容/MLCC电容"
-"SW1","3x6x5","BottomLayer","SW_3*6*4.3-S-W","84.646","393.701","90","微动开关"
+"SW1","3x6x5","BottomLayer","SW_3*6*4.3-S-W","82.677","393.701","90","微动开关"
 "SW2","3x6x5","BottomLayer","SW_SMD-3*6*2.5","1173.621","749.188","270","微动开关"
 "SW3","3x6x5","BottomLayer","SW_SMD-3*6*2.5","1173.621","1221.629","270","微动开关"
 "U3","CH340K","BottomLayer","SOP10_M","492.126","897.638","90","USB转串口芯片, 内置晶振"
@@ -37,7 +37,7 @@ Units used: mil
 "R5","1M","BottomLayer","R0402_M","283.465","279.409","90","贴片电阻"
 "R4","4.7K","BottomLayer","R0402_M","488.189","279.409","90","贴片电阻"
 "R3","4.7K","BottomLayer","R0402_M","440.945","279.409","90","贴片电阻"
-"R2","10K","BottomLayer","R0402_M","1196.850","1511.811","180","贴片电阻"
+"R2","100K","BottomLayer","R0402_M","1196.850","1511.811","180","贴片电阻"
 "R1","1K","BottomLayer","R0402_M","1075.000","505.000","0","贴片电阻"
 "Q3","AO3400","BottomLayer","SOT23-3N","86.614","137.795","180","N沟道 30V/4.2A"
 "Q2","AO3401","BottomLayer","SOT23-3N","700.787","1480.315","0","P沟道 30V/4.2A"
@@ -45,7 +45,7 @@ Units used: mil
 "LED3","GREEN","BottomLayer","LED0603_R","47.246","1200.003","270","贴片LED"
 "LED2","RED","BottomLayer","LED0603_R","47.246","1325.003","270","贴片LED"
 "LED1","GREEN","BottomLayer","LED0603_R","1185.003","504.998","180","贴片LED"
-"L1","47uH/1A","BottomLayer","SWPA4020","1141.732","118.110","0","贴片小功率电感"
+"L1","47uH/1A","BottomLayer","SWPA4030","1141.732","118.110","0","贴片小功率电感"
 "JP3","HDR-1X4","BottomLayer","HDR1.27-LI-4P","1031.496","1511.811","180","4P连接器"
 "JP2","HDR-1X2","BottomLayer","MX1.25-W-2P","39.370","1476.378","270","2P连接器"
 "DE1","DEBUG PAD","BottomLayer","DEBUG_B","850.000","1515.000","180","调试断点焊盘"

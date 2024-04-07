@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: eElements.PcbDoc   2024/3/15  16:19:18
+NCDrill File Report For: eElements.PcbDoc   2024/4/7  15:58:55
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -8,7 +8,7 @@ ASCII SlotHoles File : eElements-SlotHoles.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      12mil (0.305mm)                                           Round             72        PTH        10.79inch (274.07mm)
+T1      12mil (0.305mm)                                           Round             73        PTH        10.88inch (276.41mm)
 T2      20mil (0.5mm)                                             Round             2         PTH        0.05inch (1.25mm)
 T3      24mil (0.6mm)                                             Round             4         PTH        0.15inch (3.81mm)
 T4      28mil (0.7mm)                                             Slot              2         PTH        0.80inch (20.27mm)
@@ -16,6 +16,6 @@ T5      32mil (0.8mm)                                             Slot          
 T6      35mil (0.9mm)                                             Round             2         PTH        0.09inch (2.30mm)
 T7      30mil (0.75mm)                                            Round             2         NPTH       0.23inch (5.78mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              86
+Totals                                                                              87
 
-Total Processing Time (hh:mm:ss) : 00:00:01
+Total Processing Time (hh:mm:ss) : 00:00:00
