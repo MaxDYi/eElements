@@ -115,7 +115,6 @@ int main(void)
     /* USER CODE BEGIN 2 */
     WKUP_Deinit();
     KEY_GPIO_Init();
-    LoadParameters(&runPara);
     PWR_LDO_GPIO_Init();
     if (KEY_Hold(5) == KEY_DOWN) {
         PWR_LDO_On();
@@ -128,12 +127,12 @@ int main(void)
         EPD_DrawLowVoltage();
         PWR_LDO_Off();
     }
-
+    LoadParameters(&runPara);
     uint8_t frameNum = 0;
     uint16_t stopTime = 0;
     uint16_t remainStopTime = 0;
-    //uint64_t totalStopTime = 2000 * 10;
-    uint64_t totalStopTime = runPara.sleepTime * 100 * 10;
+    //uint64_t totalStopTime = 10 * 2000;
+    uint64_t totalStopTime = (runPara.sleepTime - 2) * 2000;
     remainStopTime = totalStopTime;
 
     for (uint8_t i = frameNum;i < ELEMENT_NUM;i++) {
@@ -260,7 +259,7 @@ void SystemClock_Config(void)
 void Error_Handler(void)
 {
     /* USER CODE BEGIN Error_Handler_Debug */
-                                /* User can add his own implementation to report the HAL error return state */
+                                  /* User can add his own implementation to report the HAL error return state */
     __disable_irq();
     while (1)
     {
@@ -279,8 +278,8 @@ void Error_Handler(void)
 void assert_failed(uint8_t* file , uint32_t line)
 {
     /* USER CODE BEGIN 6 */
-                                /* User can add his own implementation to report the file name and line number,
-                                   ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-                                   /* USER CODE END 6 */
+                                  /* User can add his own implementation to report the file name and line number,
+                                     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+                                     /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

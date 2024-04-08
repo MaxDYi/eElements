@@ -1,11 +1,12 @@
 /*
  * @FilePath: \eElements\Drivers\element\element.c
  * @Author: MaxDYi
- * @Date: 2024-02-27 10:50:23
+ * @Date: 2024-04-07 18:13:32
  * @LastEditors: MaxDYi
- * @LastEditTime: 2024-03-22 10:55:28
- * @Description:
+ * @LastEditTime: 2024-04-08 10:51:34
+ * @Description:存储元素信息
  */
+
 #include "element.h"
 
 struct elements elementInfo[ELEMENT_NUM] = {

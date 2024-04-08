@@ -1,16 +1,24 @@
+/*
+ * @FilePath: \eElements\Drivers\parameter\parameter.c
+ * @Author: MaxDYi
+ * @Date: 2024-04-07 18:13:32
+ * @LastEditors: MaxDYi
+ * @LastEditTime: 2024-04-08 10:23:29
+ * @Description:运行参数的存储与读取
+ */
 #include "parameter.h"
 
 #define PARAMETER_ADDRESS 0x0803F800
 #define PARAMETER_LEN 0x400
 
-/**
- * @description: Flash参数结构体
- * @return {*}
- */
+ /**
+  * @description: Flash参数结构体
+  * @return {*}
+  */
 struct parameters defaultParameters = {
     .initFlag = 0x01,
     .showStr = "Design by MaxDYi",
-    .sleepTime = 20,
+    .sleepTime = 30,
     .showFlag = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                  1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                  1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

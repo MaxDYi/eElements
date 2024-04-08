@@ -1,12 +1,18 @@
 /*
- * @Description  :
- * @Author       : MaxDYi
- * @Date         : 2024-03-14 09:53:20
- * @LastEditTime: 2024-03-29 20:10:51
  * @FilePath: \eElements\Drivers\battery\battery.c
+ * @Author: MaxDYi
+ * @Date: 2024-04-07 18:13:32
+ * @LastEditors: MaxDYi
+ * @LastEditTime: 2024-04-08 10:52:18
+ * @Description:锂电池相关的库函数
  */
+
 #include "battery.h"
 
+ /**
+  * @description: 读取电池电压
+  * @return {*}
+  */
 float Bat_GetVoltage(void)
 {
     MX_OPAMP1_Init();
@@ -25,6 +31,10 @@ float Bat_GetVoltage(void)
     return voltage;
 }
 
+/**
+ * @description: 读取电池状态
+ * @return {*}
+ */
 uint8_t Bat_GetMode(void)
 {
     BAT_GPIO_Init();
@@ -53,11 +63,19 @@ uint8_t Bat_GetMode(void)
     return mode;
 }
 
+/**
+ * @description: 读取电池充电状态
+ * @return {*}
+ */
 uint8_t Bat_ReadChrg(void)
 {
     return HAL_GPIO_ReadPin(BAT_CHRG_GPIO_Port , BAT_CHRG_Pin);
 }
 
+/**
+ * @description: 读取电池待机状态
+ * @return {*}
+ */
 uint8_t Bat_ReadStdby(void)
 {
     return HAL_GPIO_ReadPin(BAT_STDBY_GPIO_Port , BAT_STDBY_Pin);
