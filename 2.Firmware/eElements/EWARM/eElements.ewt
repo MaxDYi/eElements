@@ -1439,6 +1439,9 @@
                     <name>$PROJ_DIR$\..\Core\Src\adc.c</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\Core\Src\dma.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\Core\Src\gpio.c</name>
                 </file>
                 <file>
@@ -1507,6 +1510,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Drivers\epd\epd_gui.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Drivers\epd\epdfont.c</name>
             </file>
         </group>
         <group>

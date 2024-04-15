@@ -60,6 +60,7 @@ E:\eElements\2.Firmware\eElements\EWARM\eElements\BrowseInfo\Application\User\Co
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\epd\epd_gui.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\bsp\bsp.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\epd\epd.h \
+  E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\epd\epdfont.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\element\element.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\PWR\PWR.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\battery\battery.h \

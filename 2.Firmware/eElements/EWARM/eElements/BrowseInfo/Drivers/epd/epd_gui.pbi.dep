@@ -55,4 +55,5 @@ E:\eElements\2.Firmware\eElements\EWARM\eElements\BrowseInfo\Drivers\epd\epd_gui
   E:\eElements\2.Firmware\eElements\EWARM\..\Core\Inc\spi.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Core\Inc\main.h \
   E:\eElements\2.Firmware\eElements\Drivers\epd\epd.h \
+  E:\eElements\2.Firmware\eElements\Drivers\epd\epdfont.h \
   E:\eElements\2.Firmware\eElements\EWARM\..\Drivers\element\element.h

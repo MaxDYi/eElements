@@ -408,7 +408,7 @@
         </option>
         <option>
           <name>IccAllowVLA</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>IccStaticDestr</name>
@@ -1172,6 +1172,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\Drivers\epd\epd_gui.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$\..\Drivers\epd\epdfont.c</name>
       </file>
     </group>
     <group>
